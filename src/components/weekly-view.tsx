@@ -66,11 +66,11 @@ const weeklyTasks = [
 export default function WeeklyView() {
   const [weekDates, setWeekDates] = useState(generateWeekDates())
 
-  const formatDate = (date) => {
+  const formatDate = (date: Date) => {
     return date.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" })
   }
 
-  const isToday = (date) => {
+  const isToday = (date: Date) => {
     const today = new Date()
     return (
       date.getDate() === today.getDate() &&
@@ -79,7 +79,7 @@ export default function WeeklyView() {
     )
   }
 
-  const getTasksForDate = (date) => {
+  const getTasksForDate = (date: Date) => {
     return weeklyTasks.filter(
       (task) =>
         task.date.getDate() === date.getDate() &&
@@ -88,7 +88,7 @@ export default function WeeklyView() {
     )
   }
 
-  const getPriorityColor = (priority) => {
+  const getPriorityColor = (priority: string) => {
     switch (priority) {
       case "high":
         return "bg-red-500 text-white"
